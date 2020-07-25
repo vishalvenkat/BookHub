@@ -1,0 +1,9 @@
+.sidenav {
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.sidenav__button {
+  width: 150px;
+  margin-top: 25px;
+}

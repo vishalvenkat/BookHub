@@ -1,0 +1,11 @@
+.index {
+  background-color: antiquewhite;
+}
+
+.index__text {
+  text-align: center;
+}
+
+.index__button {
+  align-self: center;
+}

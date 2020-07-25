@@ -1,8 +1,16 @@
-<div fxLayout="column">
-  <div>
-    <app-header></app-header>
-  </div>
-  <div>
-    <app-footer></app-footer>
+<div fxLayout="column" fxFlexFill>
+  <app-header (showSideNav)="toggleSideNav()"></app-header>
+  <div fxFlex fxLayout="column">
+    <div fxFlex fxLayout="column">
+      <mat-drawer-container class="sidenav__container">
+        <mat-drawer mode="push" [opened]="showSideNav" class="sidenav">
+          <app-sidenav></app-sidenav>
+        </mat-drawer>
+        <router-outlet></router-outlet>
+      </mat-drawer-container>
+    </div>
+    <div>
+      <app-footer></app-footer>
+    </div>
   </div>
 </div>
