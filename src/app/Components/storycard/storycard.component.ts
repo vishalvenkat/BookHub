@@ -11,12 +11,14 @@ import { UserService } from "src/app/Service/user.service";
 })
 export class StorycardComponent implements OnInit {
   @Input() book: Book;
+  @Input() enableViewButton: boolean;
   constructor(private router: Router, private userService: UserService) {}
 
   ngOnInit(): void {}
 
   viewStory = () => {
-    this.router.navigate(["/ViewBook", this.book.bookId]);
+    if (this.enableViewButton)
+      this.router.navigate(["/ViewBook", this.book.bookId]);
   };
   getAuthor = (authorId: number): string => {
     return this.userService.getNameWithId(authorId);

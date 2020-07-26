@@ -1,4 +1,13 @@
 .view {
-  width: 100%;
+  width: 80%;
   height: 100%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+mat-card {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.view__comment__name {
+  color: blue;
 }

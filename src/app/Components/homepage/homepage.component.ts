@@ -13,6 +13,7 @@ export class HomepageComponent implements OnInit {
   userId: number;
   bookList: Book[] = [];
   name: string;
+  enableViewButton: boolean;
   constructor(
     private userService: UserService,
     private bookService: BookService,
@@ -42,11 +43,11 @@ export class HomepageComponent implements OnInit {
   };
 
   initialiseAllBooks = (): void => {
-    console.log(`${this.userId}`);
+    this.enableViewButton = true;
     this.bookList = this.bookService.getPublicBooks(this.userId);
   };
   initialiseSampleBooks = (): void => {
-    console.log("loaded sample books");
+    this.enableViewButton = false;
     this.bookList = this.bookService.getSampleBooks();
   };
 }

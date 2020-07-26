@@ -1,15 +1,23 @@
-<div class="view">
-  <div class="view__title">{{ book.title }}</div>
-  <div class="view__authorname">{{ author }}</div>
-  <div class="view__story">{{ book.story }}</div>
-  <div class="view__comments">
-    <div class="view__comment" *ngFor="let comment of book.comments">
-      {{ comment.comment }}
+<div fxLayout="column" class="view">
+  <mat-card>
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <div>
+        <mat-card-header>
+          <mat-card-title>{{ book.title }}</mat-card-title>
+        </mat-card-header>
+      </div>
+      <div>
+        <mat-card-content>
+          <div class="view__story">
+            {{ book.story }}
+          </div>
+        </mat-card-content>
+      </div>
     </div>
-  </div>
-  <div class="add__comment">
-    <div class="add__comment__text">
-      <mat-form-field class="example-full-width">
+  </mat-card>
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <div>
+      <mat-form-field>
         <mat-label>Add your comment</mat-label>
         <textarea
           matInput
@@ -18,8 +26,19 @@
         ></textarea>
       </mat-form-field>
     </div>
-    <div class="add__comment__submit">
-      <button mat-raised-button (click)="addNewComment()">Add comment</button>
+    <div>
+      <button mat-raised-button (click)="addNewComment()">
+        Add comment
+      </button>
     </div>
+  </div>
+  <div *ngIf="isCommentAvailable">
+    Comments:-
+    <ul class="view__comment" *ngFor="let comment of book.comments">
+      <li>{{ comment.comment }} - {{ getNameWithId(comment.commenterId) }}</li>
+    </ul>
+  </div>
+  <div *ngIf="!isCommentAvailable">
+    No comments available for this book yet...
   </div>
 </div>

@@ -1,6 +1,9 @@
 <div fxLayout="column" fxLayoutAlign="center center">
   <div>Hi {{ name }}, some stories to read for you...</div>
   <div *ngFor="let book of bookList">
-    <app-storycard [book]="book"></app-storycard>
+    <app-storycard
+      [book]="book"
+      [enableViewButton]="enableViewButton"
+    ></app-storycard>
   </div>
 </div>
