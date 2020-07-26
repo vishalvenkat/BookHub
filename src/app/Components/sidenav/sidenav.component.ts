@@ -3,6 +3,7 @@ import { UserService } from "src/app/Service/user.service";
 import { GetStartedComponent } from "../get-started/get-started.component";
 import { MatDialog } from "@angular/material";
 import { Router } from "@angular/router";
+import { SidenavService } from "src/app/Service/sidenav.service";
 
 @Component({
   selector: "app-sidenav",
@@ -14,7 +15,8 @@ export class SidenavComponent implements OnInit {
   constructor(
     private userService: UserService,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private sidenavService: SidenavService
   ) {
     userService.isLoggedIn.subscribe(
       (isLoggedIn: boolean) => (this.isLoggedIn = isLoggedIn)
@@ -33,6 +35,10 @@ export class SidenavComponent implements OnInit {
   };
   navigateToHomePage = () => {
     this.userService.isLoggedIn.emit(true);
+    this.closeSidenav();
     this.router.navigate(["Homepage"]);
+  };
+  closeSidenav = () => {
+    this.sidenavService.showSideNav.emit(false);
   };
 }

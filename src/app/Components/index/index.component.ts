@@ -14,22 +14,20 @@ export class IndexComponent implements OnInit {
     private dialog: MatDialog,
     private router: Router,
     private userService: UserService
-  ) {
-    if (userService.userId !== undefined) this.router.navigate([""]);
-  }
+  ) {}
 
   ngOnInit(): void {}
   getStarted = () => {
     let ref = this.dialog.open(GetStartedComponent);
     ref.componentInstance.isLoggedIn.subscribe((data: any) => {
       if (data === true) {
+        this.userService.isLoggedIn.emit(true);
         ref.close();
         this.navigateToHomePage();
       }
     });
   };
   navigateToHomePage = () => {
-    this.userService.isLoggedIn.emit(true);
     this.router.navigate(["Homepage"]);
   };
 }

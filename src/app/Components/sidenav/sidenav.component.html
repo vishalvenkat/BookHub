@@ -11,19 +11,34 @@
       </button>
     </div>
     <div>
-      <button mat-raised-button class="sidenav__button" routerLink="/Homepage">
+      <button
+        mat-raised-button
+        class="sidenav__button"
+        routerLink="/Homepage"
+        (click)="closeSidenav()"
+      >
         sample stories
       </button>
     </div>
   </div>
   <div *ngIf="isLoggedIn">
     <div>
-      <button mat-raised-button class="sidenav__button" routerLink="/Homepage">
+      <button
+        mat-raised-button
+        class="sidenav__button"
+        routerLink="/Homepage"
+        (click)="closeSidenav()"
+      >
         View public stories
       </button>
     </div>
     <div>
-      <button mat-raised-button class="sidenav__button" routerLink="/MyBooks">
+      <button
+        mat-raised-button
+        class="sidenav__button"
+        routerLink="/MyBooks"
+        (click)="closeSidenav()"
+      >
         View my stories
       </button>
     </div>
@@ -32,6 +47,7 @@
         mat-raised-button
         class="sidenav__button"
         routerLink="/AddNewBook"
+        (click)="closeSidenav()"
       >
         Add new story
       </button>

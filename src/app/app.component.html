@@ -1,9 +1,14 @@
 <div fxLayout="column" fxFlexFill>
-  <app-header (showSideNav)="toggleSideNav()"></app-header>
+  <app-header></app-header>
   <div fxFlex fxLayout="column">
     <div fxFlex fxLayout="column">
       <mat-drawer-container class="sidenav__container">
-        <mat-drawer mode="push" [opened]="showSideNav" class="sidenav">
+        <mat-drawer
+          mode="push"
+          [opened]="showSideNav"
+          (closed)="closeSideNav()"
+          class="sidenav"
+        >
           <app-sidenav></app-sidenav>
         </mat-drawer>
         <router-outlet></router-outlet>

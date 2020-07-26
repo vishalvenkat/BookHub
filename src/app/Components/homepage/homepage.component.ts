@@ -18,19 +18,24 @@ export class HomepageComponent implements OnInit {
     private bookService: BookService,
     private router: Router
   ) {
-    this.userService.isLoggedIn.subscribe((isLoggedIn: boolean) => {
-      if (isLoggedIn) {
-        this.userId = this.userService.userId;
-        this.name = this.userService.name;
-        this.initialiseAllBooks();
+    userService.isLoggedIn.subscribe((loggedIn) => {
+      if (loggedIn) {
+        this.setRequiredParameters();
       }
     });
   }
-
   ngOnInit(): void {
-    this.initialiseSampleBooks();
+    if (this.userService.userId !== undefined) {
+      this.setRequiredParameters();
+    } else {
+      this.initialiseSampleBooks();
+    }
   }
-
+  setRequiredParameters = (): void => {
+    this.userId = this.userService.userId;
+    this.name = this.userService.name;
+    this.initialiseAllBooks();
+  };
   getAuthorName = (authorId: number): string => {
     let name = this.userService.getNameWithId(authorId);
     return name;
