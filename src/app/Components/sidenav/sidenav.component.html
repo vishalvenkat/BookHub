@@ -4,10 +4,37 @@
   fxLayoutAlign="start start"
   class="sidenav"
 >
-  <div>
-    <button mat-raised-button class="sidenav__button">Login</button>
+  <div *ngIf="!isLoggedIn">
+    <div>
+      <button mat-raised-button class="sidenav__button" (click)="login()">
+        Login
+      </button>
+    </div>
+    <div>
+      <button mat-raised-button class="sidenav__button" routerLink="/Homepage">
+        sample stories
+      </button>
+    </div>
   </div>
-  <div>
-    <button mat-raised-button class="sidenav__button">sample stories</button>
+  <div *ngIf="isLoggedIn">
+    <div>
+      <button mat-raised-button class="sidenav__button" routerLink="/Homepage">
+        View public stories
+      </button>
+    </div>
+    <div>
+      <button mat-raised-button class="sidenav__button" routerLink="/MyBooks">
+        View my stories
+      </button>
+    </div>
+    <div>
+      <button
+        mat-raised-button
+        class="sidenav__button"
+        routerLink="/AddNewBook"
+      >
+        Add new story
+      </button>
+    </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, EventEmitter } from "@angular/core";
 import { User } from "../Class/user";
 
 @Injectable({
@@ -7,9 +7,12 @@ import { User } from "../Class/user";
 export class UserService {
   userList: User[] = [];
   name: string;
+  userId: number;
+  isLoggedIn = new EventEmitter<boolean>();
   constructor() {
-    let user = this.createNewUser("admin", "admin", "admin");
-    this.userList.push(user);
+    this.userList.push(this.createNewUser("admin", "admin", "admin"));
+    this.userList.push(this.createNewUser("vishal", "vishal", "vishal"));
+    this.userList.push(this.createNewUser("venkat", "venkat", "venkat"));
   }
   private createNewUser = (
     name: string,
@@ -26,6 +29,7 @@ export class UserService {
     );
     if (user !== undefined) {
       this.name = user.name;
+      this.userId = user.userId;
     }
     return user === undefined ? false : true;
   };
@@ -37,5 +41,10 @@ export class UserService {
   ): void => {
     let user = this.createNewUser(name, userName, password);
     this.userList.push(user);
+  };
+
+  getNameWithId = (id: number): string => {
+    let user = this.userList.find((user) => user.userId === id);
+    return user.name;
   };
 }

@@ -1,0 +1,10 @@
+<div class="card" fxLayout="column" fxLayoutAlign="space-between center">
+  <div class="card__title">{{ book.title }}</div>
+  <div class="card__author">By {{ getAuthor(book.authorId) }}</div>
+  <div class="card__description">{{ book.description }}</div>
+  <div class="card__view__button">
+    <button mat-raised-button color="warn" (click)="viewStory()">
+      View Story
+    </button>
+  </div>
+</div>

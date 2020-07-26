@@ -13,7 +13,6 @@ export class GetStartedComponent implements OnInit {
   ngOnInit(): void {}
 
   login = (credentials: { userName: string; password: string }) => {
-    console.log("verifing the user");
     let isLoggedIn = this.userService.login(
       credentials.userName,
       credentials.password

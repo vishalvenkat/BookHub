@@ -17,7 +17,9 @@ import { LoginComponent } from "./Components/login/login.component";
 import { RegistrationComponent } from "./Components/register/register.component";
 import { HomepageComponent } from "./Components/homepage/homepage.component";
 import { MatFormFieldModule, MatInputModule } from "@angular/material";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { StorycardComponent } from "./Components/storycard/storycard.component";
+import { MyStoriesComponent } from './Components/my-stories/my-stories.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { FormsModule } from "@angular/forms";
     LoginComponent,
     RegistrationComponent,
     HomepageComponent,
+    StorycardComponent,
+    MyStoriesComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +46,7 @@ import { FormsModule } from "@angular/forms";
     MatFormFieldModule,
     FormsModule,
     MatInputModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   entryComponents: [GetStartedComponent],

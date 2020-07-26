@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { MatDialog } from "@angular/material";
 import { GetStartedComponent } from "../get-started/get-started.component";
+import { UserService } from "src/app/Service/user.service";
 
 @Component({
   selector: "app-index",
@@ -9,7 +10,13 @@ import { GetStartedComponent } from "../get-started/get-started.component";
   styleUrls: ["./index.component.css"],
 })
 export class IndexComponent implements OnInit {
-  constructor(private dialog: MatDialog, private router: Router) {}
+  constructor(
+    private dialog: MatDialog,
+    private router: Router,
+    private userService: UserService
+  ) {
+    if (userService.userId !== undefined) this.router.navigate([""]);
+  }
 
   ngOnInit(): void {}
   getStarted = () => {
@@ -22,6 +29,7 @@ export class IndexComponent implements OnInit {
     });
   };
   navigateToHomePage = () => {
+    this.userService.isLoggedIn.emit(true);
     this.router.navigate(["Homepage"]);
   };
 }

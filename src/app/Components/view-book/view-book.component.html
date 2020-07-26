@@ -1,1 +1,25 @@
-<p>view-book works!</p>
+<div class="view">
+  <div class="view__title">{{ book.title }}</div>
+  <div class="view__authorname">{{ author }}</div>
+  <div class="view__story">{{ book.story }}</div>
+  <div class="view__comments">
+    <div class="view__comment" *ngFor="let comment of book.comments">
+      {{ comment.comment }}
+    </div>
+  </div>
+  <div class="add__comment">
+    <div class="add__comment__text">
+      <mat-form-field class="example-full-width">
+        <mat-label>Add your comment</mat-label>
+        <textarea
+          matInput
+          placeholder="Ex. Story looks good..."
+          [(ngModel)]="newComment"
+        ></textarea>
+      </mat-form-field>
+    </div>
+    <div class="add__comment__submit">
+      <button mat-raised-button (click)="addNewComment()">Add comment</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="addStory" fxLayout="column" fxLayoutAlign="space-between center">
+  <form [formGroup]="form">
+    <div class="addStory__title">
+      <mat-form-field>
+        <mat-label>Enter catchy title...</mat-label>
+        <input matInput formControlName="title" required />
+      </mat-form-field>
+    </div>
+    <div class="addStory__description">
+      <mat-form-field>
+        <mat-label>Enter description</mat-label>
+        <textarea matInput formControlName="description" required></textarea>
+      </mat-form-field>
+    </div>
+    <div class="addStory__story">
+      <mat-form-field>
+        <mat-label>Start your story</mat-label>
+        <textarea matInput formControlName="story" required></textarea>
+      </mat-form-field>
+    </div>
+    <div
+      class="addStory__buttons"
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+    >
+      <div>
+        <button
+          mat-raised-button
+          [disabled]="form.invalid"
+          (click)="addNewStory()"
+        >
+          Add story
+        </button>
+      </div>
+      <div>
+        <button mat-raised-button (click)="clearForm()">Clear contents</button>
+      </div>
+    </div>
+  </form>
+</div>
